@@ -1,0 +1,83 @@
+import {
+  CodeComponent,
+  HeadingComponent,
+} from "react-markdown/lib/ast-to-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { Typography } from "@mui/material";
+import ReactMarkdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import Link from "@/lib/link";
+
+export const ReactMdCodeBlock: CodeComponent = (props) => {
+  if (props.inline) {
+    return <code className={props.className}>{props.children}</code>;
+  }
+  const match = /language-(\w+)/.exec(props.className || "");
+  const lang = match && match[1] ? match[1] : "";
+  return (
+    <SyntaxHighlighter style={oneDark} language={lang}>
+      {String(props.children).replace(/\n$/, "")}
+    </SyntaxHighlighter>
+  );
+};
+export const ReactMdHeading: HeadingComponent = (props) => {
+  const variant = (() => {
+    switch (props.level) {
+      case 1:
+        return "h1";
+      case 2:
+        return "h2";
+      case 3:
+        return "h3";
+      case 4:
+        return "h4";
+      case 5:
+        return "h5";
+      case 6:
+        return "h6";
+      default:
+        throw Error("Unknown level");
+    }
+  })();
+  return <Typography variant={variant}>{props.children}</Typography>;
+};
+
+export const ReactMdLink = (props) => {
+  const { href, children } = props;
+  if (href.match("http")) {
+    return (
+      <Link href={href} target={"_blank"}>
+        {children}
+      </Link>
+    );
+  }
+  return <Link href={href}>{children}</Link>;
+};
+
+export type MaterialReactMarkdownProps = {
+  markdownString?: string;
+};
+
+export const MaterialReactMarkdown = (props: MaterialReactMarkdownProps) => {
+  return (
+    <ReactMarkdown
+      rehypePlugins={[rehypeKatex]}
+      remarkPlugins={[remarkGfm, remarkMath]}
+      components={{
+        code: ReactMdCodeBlock,
+        h1: ReactMdHeading,
+        h2: ReactMdHeading,
+        h3: ReactMdHeading,
+        h4: ReactMdHeading,
+        h5: ReactMdHeading,
+        h6: ReactMdHeading,
+        a: ReactMdLink,
+      }}
+    >
+      {props.markdownString ?? ""}
+    </ReactMarkdown>
+  );
+};

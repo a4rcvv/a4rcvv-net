@@ -11,6 +11,11 @@ import { TwitterShareButton } from "@/components/atoms/twitterShareButton";
 import { ShareButtons } from "@/components/molecules/shareButtons";
 import { useRouter } from "next/router";
 import React from "react";
+import {
+  MaterialReactMarkdown,
+  ReactMdCodeBlock,
+  ReactMdHeading,
+} from "@/components/molecules/materialReactMarkdown";
 
 export type ArticleProps = {
   markdownString?: string;
@@ -36,18 +41,13 @@ export const Article = (props: ArticleProps) => {
   };
   return (
     <Box>
-      <Typography variant="h2">{props.title}</Typography>
+      <Typography variant="h1">{props.title}</Typography>
       <Stack direction="row" spacing={2}>
         <Category category={props.category || ""} />
         <CreatedDate date={props.createdDate || ""} />
         <UpdatedDate date={props.updatedDate || ""} />
       </Stack>
-      <ReactMarkdown
-        rehypePlugins={[rehypeKatex]}
-        remarkPlugins={[remarkGfm, remarkMath]}
-      >
-        {props.markdownString ?? ""}
-      </ReactMarkdown>
+      <MaterialReactMarkdown markdownString={props.markdownString} />
       <Divider />
       <ShareButtons
         twitterProps={twitterShareButtonProps}
