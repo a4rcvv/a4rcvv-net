@@ -6,7 +6,7 @@ export const MenuOnDrawer = () => {
   return (
     <Box>
       <Typography variant={"h2"} sx={{ mb: 1 }}>
-        Contents
+        Menu
       </Typography>
       <Stack direction={"column"} spacing={1} alignItems={"flex-start"}>
         {menuElements.map((element) => {
