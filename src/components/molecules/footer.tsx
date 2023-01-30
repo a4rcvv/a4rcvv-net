@@ -19,7 +19,7 @@ export const Footer = () => {
       sx={{
         width: "100%",
         marginTop: "auto",
-        backgroundColor: "primary.dark",
+        backgroundColor: "secondary.main",
         py: 1,
       }}
     >

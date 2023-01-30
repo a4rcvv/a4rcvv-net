@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes } from "@mui/material";
+import { alpha, createTheme, responsiveFontSizes } from "@mui/material";
 
 export const getTheme = () => {
   const theme = createTheme({
@@ -23,8 +23,15 @@ export const getTheme = () => {
     },
     palette: {
       background: {
-        default: "#e0e0e0",
-        paper: "#f0f0f0",
+        default: "#cfd8dc",
+        paper: "#eeeeee",
+      },
+      primary: { main: "#90caf9" },
+      secondary: { main: "#b39ddb" },
+      text: {
+        primary: "#424242",
+        secondary: "#757575",
+        disabled: "#bdbdbd",
       },
     },
   });
