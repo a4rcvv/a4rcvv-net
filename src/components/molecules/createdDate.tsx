@@ -9,7 +9,7 @@ export const CreatedDate = (props: CreatedDateProps) => {
   return (
     <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
       <Create />
-      <Typography variant="h6">{props.date}</Typography>
+      <Typography variant="body1">{props.date}</Typography>
     </Box>
   );
 };

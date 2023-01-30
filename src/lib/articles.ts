@@ -1,19 +1,34 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import { ArticleMetadata, ArticleMetadataSerializable } from "@/lib/types";
+import dayjs from "dayjs";
 
-export const articlesDirectory = "resources/articles";
-export const getAllPostIds = () => {
-  const fileNames = fs.readdirSync(articlesDirectory);
-  return fileNames.map((fileName) => fileName.replace(/\.md$/, ""));
-};
-export const getArticle = (id: string) => {
-  const fullPath = path.join(articlesDirectory, `${id}.md`);
-  const file = fs.readFileSync(fullPath, "utf8");
-  const matterResult = matter(file);
+export const deserialized = (
+  serializable: ArticleMetadataSerializable,
+): ArticleMetadata => {
   return {
-    id: id,
-    content: matterResult.content,
-    metadata: matterResult.data,
+    title: serializable.title == null ? undefined : serializable.title,
+    id: serializable.id,
+    tags: serializable.tags,
+    createdDate: dayjs(serializable.createdDate),
+    updatedDate: dayjs(serializable.updatedDate),
   };
+};
+export const defaultArticleSorter = (
+  a: ArticleMetadata,
+  b: ArticleMetadata,
+) => {
+  const aCreatedDate = a.createdDate ?? dayjs(0);
+  const bCreatedDate = b.createdDate ?? dayjs(0);
+  const aTitle = a.title ?? "";
+  const bTitle = b.title ?? "";
+  if (aCreatedDate < bCreatedDate) {
+    return 1;
+  } else if (aCreatedDate > bCreatedDate) {
+    return -1;
+  }
+  if (aTitle < bTitle) {
+    return 1;
+  } else if (aTitle > bTitle) {
+    return -1;
+  }
+  return 0;
 };

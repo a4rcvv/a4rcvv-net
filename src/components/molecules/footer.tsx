@@ -6,6 +6,7 @@ import {
   faTwitter,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import Link from "@/lib/link";
 
 export const Footer = () => {
   const theme = useTheme();
@@ -22,9 +23,15 @@ export const Footer = () => {
         py: 1,
       }}
     >
-      <Typography variant="h6" align={"center"} color={"primary.contrastText"}>
-        a4rcvv.net
-      </Typography>
+      <Link href={{ pathname: "/" }}>
+        <Typography
+          variant="h6"
+          align={"center"}
+          color={"primary.contrastText"}
+        >
+          a4rcvv.net
+        </Typography>
+      </Link>
       <Stack direction={"row"} justifyContent={"center"}>
         <IconButton
           size={"medium"}

@@ -2,39 +2,35 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardHeader,
-  Grid,
+  Divider,
+  Stack,
+  Typography,
 } from "@mui/material";
 import { CreatedDate } from "@/components/molecules/createdDate";
 import { UpdatedDate } from "@/components/molecules/updatedDate";
 import { NextLinkComposed } from "@/lib/link";
+import { ArticleMetadata } from "@/lib/types";
+import { Tags } from "@/components/molecules/tags";
 
-export type ArticleCardProps = {
-  id: string;
-  title: string | null;
-  createdDate: string | null;
-  updatedDate: string | null;
-  category: string | null;
-  tags: string[];
-};
+export type ArticleCardProps = ArticleMetadata;
 
 export const ArticleCard = (props: ArticleCardProps) => {
-  const href = `/blog/${props.id}`;
+  const href = `/blog/entry/${props.id}`;
   return (
-    <Card variant="outlined">
+    <Card variant={"outlined"}>
       <CardActionArea component={NextLinkComposed} to={{ pathname: href }}>
-        <CardHeader title={props.title} />
         <CardContent>
-          <Grid container spacing={2}>
-            <Grid item mobile={6}>
-              <CreatedDate date={props.createdDate || ""} />
-            </Grid>
-            <Grid item mobile={6}>
-              <UpdatedDate date={props.updatedDate || ""} />
-            </Grid>
-          </Grid>
+          <Typography variant={"h5"}>{props.title}</Typography>
+          <Stack spacing={2} direction={"row"} sx={{ mt: 1 }}>
+            <CreatedDate date={props.createdDate?.format("YYYY/MM/DD") || ""} />
+            <UpdatedDate date={props.updatedDate?.format("YYYY/MM/DD") || ""} />
+          </Stack>
         </CardContent>
       </CardActionArea>
+      <Divider />
+      <CardContent>
+        <Tags tags={props.tags} />
+      </CardContent>
     </Card>
   );
 };

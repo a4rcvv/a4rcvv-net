@@ -1,8 +1,10 @@
 ---
 title: テスト
-category: カテゴリー
-createdDate: 2023/01/15
-updatedDate: 2023/01/15
+createdDate: 2023-01-29
+updatedDate: 2023-01-29
+tags:
+    - hoge
+    - fuga
 ---
 
 # h1 Heading 8-)
