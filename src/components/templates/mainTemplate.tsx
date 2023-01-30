@@ -11,7 +11,7 @@ import {
 import { Footer } from "@/components/molecules/footer";
 import { useTheme } from "@mui/system";
 import useResponsiveValue from "@/hooks/useResponsiveValue";
-import { ContentOnDrawer } from "@/components/organisms/contentOnDrawer";
+import { MenuOnDrawer } from "@/components/organisms/menuOnDrawer";
 
 export type DoubleColumnTemplateProps = {
   mainContent: ReactNode;
@@ -76,7 +76,7 @@ export const MainTemplate = (props: DoubleColumnTemplateProps) => {
             }}
           >
             <Paper sx={{ p: p, mb: 1 }}>
-              <ContentOnDrawer />
+              <MenuOnDrawer />
             </Paper>
           </Drawer>
         ) : null}

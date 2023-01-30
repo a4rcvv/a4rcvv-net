@@ -9,6 +9,7 @@ import {
 import Link, { NextLinkComposed } from "@/lib/link";
 import useResponsiveValue from "@/hooks/useResponsiveValue";
 import MenuIcon from "@mui/icons-material/Menu";
+import { menuElements } from "@/constants";
 
 export type HeaderProps = {
   onClickMenuIcon?: () => void;
@@ -30,20 +31,18 @@ export const Header = (props: HeaderProps) => {
         </Typography>
         {!disableContentButtons ? (
           <Box>
-            <Button
-              component={NextLinkComposed}
-              to={{ pathname: "/blog" }}
-              color="inherit"
-            >
-              Blog
-            </Button>
-            <Button
-              component={NextLinkComposed}
-              to={{ pathname: "/contact" }}
-              color="inherit"
-            >
-              Contact
-            </Button>
+            {menuElements.map((element) => {
+              return (
+                <Button
+                  key={element[0]}
+                  component={NextLinkComposed}
+                  to={{ pathname: element[1] }}
+                  color="inherit"
+                >
+                  {element[0]}
+                </Button>
+              );
+            })}
           </Box>
         ) : null}
         {!disableMenuIcon ? (
