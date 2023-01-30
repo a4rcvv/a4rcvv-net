@@ -2,18 +2,13 @@ import { GetStaticProps, NextPage } from "next";
 import { getAllMetadataSerializable } from "@/lib/ssr/articles";
 import { ArticleList } from "@/components/organisms/articleList";
 import { MainTemplate } from "@/components/templates/mainTemplate";
-import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { TagList } from "@/components/organisms/tagList";
+import { ArticleMetadataSerializable } from "@/lib/types";
+import { deserialized } from "@/lib/articles";
 
 export type BlogIndexProps = {
-  metadata: {
-    id: string;
-    title?: string;
-    createdDate?: string;
-    updatedDate?: string;
-    tags: string[];
-  }[];
+  metadata: ArticleMetadataSerializable[];
 };
 
 export const getStaticProps: GetStaticProps<BlogIndexProps> = () => {
@@ -27,13 +22,7 @@ export const getStaticProps: GetStaticProps<BlogIndexProps> = () => {
 
 const BlogIndex: NextPage<BlogIndexProps> = (props) => {
   const metadata = props.metadata.map((data) => {
-    const createdDate = dayjs(data.createdDate);
-    const updatedDate = dayjs(data.updatedDate);
-    return {
-      ...data,
-      createdDate: createdDate,
-      updatedDate: updatedDate,
-    };
+    return deserialized(data);
   });
   const router = useRouter();
   const tagQuery = router.query["tag"];
