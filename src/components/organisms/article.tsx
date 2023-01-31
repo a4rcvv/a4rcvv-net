@@ -33,9 +33,11 @@ export const Article = (props: ArticleProps) => {
   };
   return (
     <Box>
-      <Typography variant="h1">{props.currentMetadata.title}</Typography>
+      <Typography variant="h1" sx={{ mb: 2 }}>
+        {props.currentMetadata.title}
+      </Typography>
       <Tags tags={props.currentMetadata.tags} />
-      <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
+      <Stack direction="row" spacing={2} sx={{ my: 1 }}>
         <CreatedDate
           date={props.currentMetadata.createdDate?.format("YYYY/MM/DD") || ""}
         />
@@ -43,6 +45,7 @@ export const Article = (props: ArticleProps) => {
           date={props.currentMetadata.updatedDate?.format("YYYY/MM/DD") || ""}
         />
       </Stack>
+      <Divider />
       <MaterialReactMarkdown markdownString={props.markdownString} />
       <Divider />
       <ShareButtons
