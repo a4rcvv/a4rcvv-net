@@ -1,5 +1,5 @@
 import { ArticleMetadata } from "@/lib/types";
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { ArticleTag } from "@/components/atoms/articleTag";
 
 export type TagListProps = {
@@ -23,15 +23,20 @@ export const TagList = (props: TagListProps) => {
       <Typography variant={"h2"} pb={2}>
         Tags
       </Typography>
-      <Box display={"flex"}>
+      <Stack
+        direction={"row"}
+        justifyContent={"flex-start"}
+        alignItems={"center"}
+        sx={{ flexWrap: "wrap", gap: 1 }}
+      >
         {tagCountArray.map(([tag, count]) => {
           return (
-            <Box key={tag} sx={{ mr: 1, mb: 1 }}>
+            <Box key={tag}>
               <ArticleTag tag={tag} postfix={`(${count})`} />
             </Box>
           );
         })}
-      </Box>
+      </Stack>
     </Box>
   );
 };
