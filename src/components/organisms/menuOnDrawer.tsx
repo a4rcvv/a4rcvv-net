@@ -12,12 +12,12 @@ export const MenuOnDrawer = () => {
         {menuElements.map((element) => {
           return (
             <Link
-              key={element[0]}
-              href={{ pathname: element[1] }}
+              key={element.href}
+              href={{ pathname: element.href }}
               color={"inherit"}
               underline={"hover"}
             >
-              <Typography variant={"h4"}>{element[0]}</Typography>
+              <Typography variant={"h4"}>{element.name}</Typography>
             </Link>
           );
         })}

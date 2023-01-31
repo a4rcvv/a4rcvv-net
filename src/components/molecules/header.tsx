@@ -34,12 +34,12 @@ export const Header = (props: HeaderProps) => {
             {menuElements.map((element) => {
               return (
                 <Button
-                  key={element[0]}
+                  key={element.href}
                   component={NextLinkComposed}
-                  to={{ pathname: element[1] }}
+                  to={{ pathname: element.href }}
                   color="inherit"
                 >
-                  {element[0]}
+                  {element.name}
                 </Button>
               );
             })}
