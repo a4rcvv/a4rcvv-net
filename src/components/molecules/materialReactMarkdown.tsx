@@ -49,7 +49,7 @@ export const ReactMdLink = (props) => {
   const { href, children } = props;
   if (href.match("http")) {
     return (
-      <Link href={href} target={"_blank"}>
+      <Link href={href} target={"_blank"} color={"inherit"}>
         {children}
       </Link>
     );

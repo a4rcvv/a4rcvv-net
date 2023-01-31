@@ -1,5 +1,5 @@
-import Link from "@/lib/link";
-import { Typography, useTheme } from "@mui/material";
+import { NextLinkComposed } from "@/lib/link";
+import { Card, CardActionArea, Typography, useTheme } from "@mui/material";
 
 export type TagProps = {
   tag: string;
@@ -9,16 +9,28 @@ export type TagProps = {
 export const ArticleTag = (props: TagProps) => {
   const theme = useTheme();
   return (
-    <Link
-      href={{ pathname: `/blog/tag/${props.tag}` }}
-      underline={"hover"}
-      color={"inherit"}
-    >
-      <Typography
-        sx={{ backgroundColor: theme.palette.background.default, px: 1 }}
+    <Card variant={"outlined"}>
+      <CardActionArea
+        component={NextLinkComposed}
+        to={{ pathname: `/blog/tag/${props.tag}` }}
       >
-        {`${props.tag} ${props.postfix ?? ""}`}
-      </Typography>
-    </Link>
+        <Typography
+          sx={{ backgroundColor: theme.palette.background.default, px: 1 }}
+        >
+          {`${props.tag} ${props.postfix ?? ""}`}
+        </Typography>
+      </CardActionArea>
+    </Card>
+    // <Link
+    //   href={{ pathname: `/blog/tag/${props.tag}` }}
+    //   underline={"hover"}
+    //   color={"inherit"}
+    // >
+    //   <Typography
+    //     sx={{ backgroundColor: theme.palette.background.default, px: 1 }}
+    //   >
+    //     {`${props.tag} ${props.postfix ?? ""}`}
+    //   </Typography>
+    // </Link>
   );
 };

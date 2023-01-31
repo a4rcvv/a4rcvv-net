@@ -25,7 +25,7 @@ export const Header = (props: HeaderProps) => {
     <AppBar position="fixed" sx={{ px: px }}>
       <Toolbar>
         <Typography variant="h5" sx={{ flexGrow: 1 }}>
-          <Link href={{ pathname: "/" }} underline="none" color={"inherit"}>
+          <Link href={{ pathname: "/" }} underline="hover" color={"inherit"}>
             a4rcvv.net
           </Link>
         </Typography>
@@ -37,7 +37,7 @@ export const Header = (props: HeaderProps) => {
                   key={element.href}
                   component={NextLinkComposed}
                   to={{ pathname: element.href }}
-                  color="inherit"
+                  color={"inherit"}
                 >
                   {element.name}
                 </Button>

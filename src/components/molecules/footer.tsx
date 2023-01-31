@@ -23,15 +23,15 @@ export const Footer = () => {
         py: 1,
       }}
     >
-      <Link href={{ pathname: "/" }}>
-        <Typography
-          variant="h6"
-          align={"center"}
-          color={"primary.contrastText"}
-        >
+      <Typography
+        variant="h6"
+        align={"center"}
+        color={"secondary.contrastText"}
+      >
+        <Link href={{ pathname: "/" }} underline={"hover"} color={"inherit"}>
           a4rcvv.net
-        </Typography>
-      </Link>
+        </Link>
+      </Typography>
       <Stack direction={"row"} justifyContent={"center"}>
         <IconButton
           size={"medium"}

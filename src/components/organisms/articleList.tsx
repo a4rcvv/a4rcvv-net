@@ -43,7 +43,9 @@ export const ArticleList = (props: ArticleListProps) => {
       </Typography>
       {props.tagsFilter && props.tagsFilter.length > 0 ? (
         <Box display={"flex"} alignItems={"center"} sx={{ pb: 1 }}>
-          <Typography variant={"body1"}>Filtered by:</Typography>
+          <Typography variant={"body1"} sx={{ pr: 1 }}>
+            Filtered by:
+          </Typography>
           <Tags tags={props.tagsFilter} disableIcon />
           <IconButton component={NextLinkComposed} to={{ pathname: "/blog" }}>
             <Cancel />

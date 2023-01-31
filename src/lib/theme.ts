@@ -1,4 +1,5 @@
-import { alpha, createTheme, responsiveFontSizes } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
+import { blue, blueGrey, deepPurple, grey } from "@mui/material/colors";
 
 export const getTheme = () => {
   const theme = createTheme({
@@ -23,15 +24,15 @@ export const getTheme = () => {
     },
     palette: {
       background: {
-        default: "#cfd8dc",
-        paper: "#eeeeee",
+        default: blueGrey[100],
+        paper: grey[200],
       },
-      primary: { main: "#90caf9" },
-      secondary: { main: "#b39ddb" },
+      primary: { main: blue[200] },
+      secondary: { main: deepPurple[200] },
       text: {
-        primary: "#424242",
-        secondary: "#757575",
-        disabled: "#bdbdbd",
+        primary: grey[800],
+        secondary: grey[600],
+        disabled: grey[400],
       },
     },
   });
