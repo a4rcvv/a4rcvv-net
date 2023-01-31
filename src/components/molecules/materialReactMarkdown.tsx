@@ -42,7 +42,11 @@ export const ReactMdHeading: HeadingComponent = (props) => {
         throw Error("Unknown level");
     }
   })();
-  return <Typography variant={variant}>{props.children}</Typography>;
+  return (
+    <Typography variant={variant} sx={{ my: 2 }}>
+      {props.children}
+    </Typography>
+  );
 };
 
 export const ReactMdLink = (props) => {

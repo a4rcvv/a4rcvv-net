@@ -26,7 +26,6 @@ const BlogIndex: NextPage<BlogIndexProps> = (props) => {
   });
   const router = useRouter();
   const tagQuery = router.query["tag"];
-  console.log(router.query);
   let tags: string[] = [];
   if (typeof tagQuery == "string") {
     tags = [tagQuery];

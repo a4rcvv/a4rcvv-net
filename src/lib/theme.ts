@@ -5,14 +5,24 @@ export const getTheme = () => {
   const theme = createTheme({
     typography: {
       fontFamily: [
-        '"Helvetica Neue"',
-        "Arial",
         '"Hiragino Kaku Gothic ProN"',
         '"Hiragino Sans"',
         "Meiryo",
         "sans-serif",
       ].join(","),
-      fontSize: 13,
+      fontSize: 14,
+      h1: {
+        fontSize: "4rem",
+      },
+      h2: {
+        fontSize: "3rem",
+      },
+      h3: {
+        fontSize: "2rem",
+      },
+      h4: {
+        fontSize: "1.75rem",
+      },
     },
     breakpoints: {
       values: {
@@ -29,11 +39,6 @@ export const getTheme = () => {
       },
       primary: { main: blue[200] },
       secondary: { main: deepPurple[200] },
-      text: {
-        primary: grey[800],
-        secondary: grey[600],
-        disabled: grey[400],
-      },
     },
   });
   return responsiveFontSizes(theme, {
