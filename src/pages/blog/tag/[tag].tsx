@@ -2,8 +2,8 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { getAllPostIds, getArticle } from "@/lib/ssr/articles";
 import { BlogIndexProps } from "@/pages/blog";
 import { ArticleList } from "@/components/organisms/articleList";
-import dayjs from "dayjs";
 import { MainTemplate } from "@/components/templates/mainTemplate";
+import { deserialized } from "@/lib/articles";
 
 export type BlogTagViewPathParams = {
   tag: string;
@@ -60,13 +60,7 @@ export const getStaticProps: GetStaticProps<BlogTagViewProps> = (context) => {
 
 const BlogTagView: NextPage<BlogTagViewProps> = (props) => {
   const metadata = props.metadata.map((data) => {
-    const createdDate = dayjs(data.createdDate);
-    const updatedDate = dayjs(data.updatedDate);
-    return {
-      ...data,
-      createdDate: createdDate,
-      updatedDate: updatedDate,
-    };
+    return deserialized(data);
   });
   return (
     <MainTemplate

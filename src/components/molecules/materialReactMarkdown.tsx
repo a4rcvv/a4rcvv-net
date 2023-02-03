@@ -10,6 +10,7 @@ import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import Link from "@/lib/link";
+import { ReactNode } from "react";
 
 export const ReactMdCodeBlock: CodeComponent = (props) => {
   if (props.inline) {
@@ -49,16 +50,18 @@ export const ReactMdHeading: HeadingComponent = (props) => {
   );
 };
 
-export const ReactMdLink = (props) => {
+export const ReactMdLink = (
+  props: { href?: string; children: ReactNode } & object,
+) => {
   const { href, children } = props;
-  if (href.match("http")) {
+  if (href?.match("http")) {
     return (
       <Link href={href} target={"_blank"} color={"inherit"}>
         {children}
       </Link>
     );
   }
-  return <Link href={href}>{children}</Link>;
+  return <Link href={href ?? ""}>{children}</Link>;
 };
 
 export type MaterialReactMarkdownProps = {
