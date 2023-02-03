@@ -9,7 +9,16 @@ tags:
   - Material UI
 ---
 
-フロントエンドを書きたい発作に駆られてウェブサイトを作った．すなわちこのサイトのことである
+Next.jsでウェブサイト(すなわちこのサイト)を作った．
+
+## モチベ
+
+- Markdownで記事を書きたい
+  - できれば記事をGitリポジトリで管理したい
+- WordPressは使いたくない
+  - サーバー管理やアップデートやセキュリティ周りが面倒なので
+- **フロントエンドを書きたい発作が起きた**
+  - 最大の理由はこれである
 
 ## 使っているもの
 
@@ -20,29 +29,34 @@ tags:
 ### Next.js
 
 [Next.js](https://nextjs.org/)は[Vercel](https://vercel.com/home)がメンテナンスを主導しているWebアプリケーションフレームワーク．
-Reactの上に作られていて，ルーティングやServer Side Rendering(SSR)などの機能を提供してくれる．このサイトはStatic Site Generation(SSG)を利用している．
+Reactの上に作られていて，ルーティングやServer Side Rendering(SSR)などの機能を提供してくれる．
 
 ### TypeScript
 
-動的型付け言語を見るとアレルギー反応が出るので，通常のJavaScriptではなく[TypeScript](https://www.typescriptlang.org/)を使っている．静的(漸進的)型付け最高！
+動的型付け言語を見るとアレルギー反応が出るので，通常のJavaScriptではなく[TypeScript](https://www.typescriptlang.org/)を使っている．
+静的(漸進的)型付け最高！
 
 ### Material UI (MUI)
 
-[MUI](https://mui.com/)はMaterial Design用のコンポーネントを提供してくれるReact用ライブラリ．簡単に良い感じのデザインを作れるので好き．
+[MUI](https://mui.com/)はMaterial Design用のコンポーネントを提供してくれるReact用ライブラリ．
+簡単に良い感じのデザインを作れるので好き．
 
 ## 仕組み
 
 ### 配信システム
 
-WordPressだとサーバーを借りて管理しないといけないし，セキュリティ的にも色々面倒．ということで本サイトはJamstackを採用している．
+WordPressだとサーバーを借りて管理しないといけないし，セキュリティ的にも色々面倒．
+ということで本サイトは[Jamstack](https://jamstack.org/)を採用している．
 
-`main`ブランチにPushしたら静的なhtml・jsファイルを生成するCIが走る．サーバーはGETリクエストに対して静的ファイルを配信するだけ．
-
-ちなみに本サイトはGithub ActionsとGithub Pagesを使っている．
+Next.jsは，Reactのコードから静的なhtml・jsファイルを生成するStatic Site Generation (SSG)を提供している．
+GitHub ActionsでSSGするCIを走らせ，できたファイルをGitHub Pagesで配信している．
 
 ### 記事フォーマット
 
 ブログ記事はMarkdownで書けるようにした．
+表示には[react-markdown](https://github.com/remarkjs/react-markdown)を使用している．
+記事はリポジトリ内に`.md`ファイルとして保存していて，
+SSGする時に記事ファイルを読み込んでいる．
 
 ソースコードを書いたらシンタックスハイライトをつけてくれるようにしたり，MUI/Next.jsと親和性が出るようにカスタマイズしている．
 
@@ -52,3 +66,8 @@ export const showExample = ()=>{
 }
 ```
 
+
+## 参考資料
+
+- [react-markdownでコードをシンタックスハイライトさせる | Goodlife.tech](https://goodlife.tech/posts/react-markdown-code-highlight.html)
+- [Jamstackって何なの？何がいいの？ - Qiita](https://qiita.com/ozaki25/items/4075d03278d1fb51cc37)

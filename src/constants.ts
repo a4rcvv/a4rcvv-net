@@ -1,5 +1,3 @@
-import { description } from "rehype-parse/lib/errors";
-
 export type MenuElement = {
   name: string;
   href: string;
@@ -10,7 +8,7 @@ export const menuElements: MenuElement[] = [
   {
     name: "About",
     href: "/blog/entry/about",
-    description: "当ウェブサイトと管理者の情報",
+    description: "管理者と当ウェブサイトの情報",
   },
   { name: "Blog", href: "/blog", description: "ブログ" },
   { name: "Contact", href: "/blog/entry/contact", description: "連絡先" },

@@ -53,11 +53,13 @@ export const Article = (props: ArticleProps) => {
         url={`${process.env.NEXT_PUBLIC_URL}${router.asPath}`}
         text={props.currentMetadata.title}
       />
-      <ArticleNavigation
-        style={"vertical"}
-        previousMetadata={props.previousMetadata}
-        nextMetadata={props.nextMetadata}
-      />
+      <Box sx={{ mt: 1 }}>
+        <ArticleNavigation
+          style={"vertical"}
+          previousMetadata={props.previousMetadata}
+          nextMetadata={props.nextMetadata}
+        />
+      </Box>
     </Box>
   );
 };
