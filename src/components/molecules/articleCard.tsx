@@ -18,7 +18,11 @@ export const ArticleCard = (props: ArticleCardProps) => {
   const href = `/blog/entry/${props.id}`;
   return (
     <Card variant={"outlined"}>
-      <CardActionArea component={NextLinkComposed} to={{ pathname: href }}>
+      <CardActionArea
+        component={NextLinkComposed}
+        to={{ pathname: href }}
+        prefetch={false}
+      >
         <CardContent>
           <Typography variant={"h5"}>{props.title}</Typography>
           <Stack spacing={2} direction={"row"} sx={{ mt: 1 }}>

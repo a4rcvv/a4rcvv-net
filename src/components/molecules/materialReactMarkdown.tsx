@@ -2,8 +2,8 @@ import {
   CodeComponent,
   HeadingComponent,
 } from "react-markdown/lib/ast-to-react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import oneDark from "react-syntax-highlighter/dist/cjs/styles/prism/one-dark";
 import { Typography } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
