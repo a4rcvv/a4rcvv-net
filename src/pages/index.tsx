@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import { NextLinkComposed } from "@/lib/link";
 import { menuElements } from "@/constants";
+import Head from "next/head";
+import { getPageTitle } from "@/lib/getPageTitle";
 
 const Home: NextPage = () => {
   const mainContent = () => {
@@ -37,7 +39,14 @@ const Home: NextPage = () => {
       </Box>
     );
   };
-  return <MainTemplate mainContent={mainContent()} />;
+  return (
+    <div>
+      <Head>
+        <title>{getPageTitle()}</title>
+      </Head>
+      <MainTemplate mainContent={mainContent()} />
+    </div>
+  );
 };
 
 export default Home;

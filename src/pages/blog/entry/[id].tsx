@@ -9,6 +9,8 @@ import {
 import { MainTemplate } from "@/components/templates/mainTemplate";
 import { ArticleMetadataSerializable } from "@/lib/types";
 import { defaultArticleSorter, deserialized } from "@/lib/articles";
+import { getPageTitle } from "@/lib/getPageTitle";
+import Head from "next/head";
 
 export const getStaticPaths: GetStaticPaths<BlogArticlePathParams> = () => {
   const ids = getAllPostIds();
@@ -61,24 +63,29 @@ export type BlogArticlePathParams = {
 
 const BlogArticle: NextPage<BlogArticleProps> = (props: BlogArticleProps) => {
   return (
-    <MainTemplate
-      mainContent={
-        <Article
-          currentMetadata={deserialized(props.currentMetadata)}
-          nextMetadata={
-            props.nextMetadata !== null
-              ? deserialized(props.nextMetadata)
-              : undefined
-          }
-          previousMetadata={
-            props.previousMetadata !== null
-              ? deserialized(props.previousMetadata)
-              : undefined
-          }
-          markdownString={props.content}
-        />
-      }
-    />
+    <div>
+      <Head>
+        <title>{getPageTitle(`${props.currentMetadata.title}`)}</title>
+      </Head>
+      <MainTemplate
+        mainContent={
+          <Article
+            currentMetadata={deserialized(props.currentMetadata)}
+            nextMetadata={
+              props.nextMetadata !== null
+                ? deserialized(props.nextMetadata)
+                : undefined
+            }
+            previousMetadata={
+              props.previousMetadata !== null
+                ? deserialized(props.previousMetadata)
+                : undefined
+            }
+            markdownString={props.content}
+          />
+        }
+      />
+    </div>
   );
 };
 
