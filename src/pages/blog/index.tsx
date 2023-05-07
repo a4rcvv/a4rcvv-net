@@ -14,7 +14,9 @@ export type BlogIndexProps = {
 };
 
 export const getStaticProps: GetStaticProps<BlogIndexProps> = () => {
-  const metadata = getAllMetadataSerializable();
+  const metadata = getAllMetadataSerializable().filter((e) => {
+    return !e.isDraft;
+  });
   return {
     props: {
       metadata: metadata,

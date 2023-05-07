@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { ArticleMetadataSerializable } from "@/lib/types";
+import { ArticleMetadata, ArticleMetadataSerializable } from "@/lib/types";
 import { deserialized } from "@/lib/articles";
 
 export const articlesDirectory = "resources/articles";
@@ -43,5 +43,10 @@ export const getArticleMetadataSerializable = (
     createdDate: createdDateString,
     updatedDate: updatedDateString,
     tags: article.metadata["tags"] || [],
+    isDraft: article.metadata["isDraft"] || false,
   };
+};
+export const getArticleMetadata = (id: string): ArticleMetadata => {
+  const serializable = getArticleMetadataSerializable(id);
+  return deserialized(serializable);
 };

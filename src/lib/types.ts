@@ -6,6 +6,7 @@ export type ArticleMetadata = {
   createdDate?: Dayjs;
   updatedDate?: Dayjs;
   tags: string[];
+  isDraft?: boolean; // default: false
 };
 
 export type ArticleMetadataSerializable = {
@@ -14,4 +15,5 @@ export type ArticleMetadataSerializable = {
   createdDate: string | null;
   updatedDate: string | null;
   tags: string[];
+  isDraft: boolean;
 };

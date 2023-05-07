@@ -4,6 +4,7 @@ import {
   getAllMetadata,
   getAllPostIds,
   getArticle,
+  getArticleMetadata,
   getArticleMetadataSerializable,
 } from "@/lib/ssr/articles";
 import { MainTemplate } from "@/components/templates/mainTemplate";
@@ -13,7 +14,9 @@ import { getPageTitle } from "@/lib/getPageTitle";
 import Head from "next/head";
 
 export const getStaticPaths: GetStaticPaths<BlogArticlePathParams> = () => {
-  const ids = getAllPostIds();
+  const ids = getAllPostIds().filter((id) => {
+    return !getArticleMetadata(id).isDraft;
+  });
   return {
     paths: ids.map((id) => {
       return {
