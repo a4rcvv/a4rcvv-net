@@ -1,5 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { getAllPostIds, getArticle } from "@/lib/ssr/articles";
+import {
+  getAllPostIds,
+  getArticle,
+  getArticleMetadataSerializable,
+} from "@/lib/ssr/articles";
 import { BlogIndexProps } from "@/pages/blog";
 import { ArticleList } from "@/components/organisms/articleList";
 import { MainTemplate } from "@/components/templates/mainTemplate";
@@ -41,16 +45,7 @@ export const getStaticProps: GetStaticProps<BlogTagViewProps> = (context) => {
   const { tag } = context.params as BlogTagViewPathParams;
   const ids = getAllPostIds();
   const metadata = ids.map((id) => {
-    const article = getArticle(id);
-    const createdDateString = article.metadata["createdDate"].toString();
-    const updatedDateString = article.metadata["updatedDate"].toString();
-    return {
-      id: id,
-      title: article.metadata["title"] as string,
-      createdDate: createdDateString,
-      updatedDate: updatedDateString,
-      tags: article.metadata["tags"] || [],
-    };
+    return getArticleMetadataSerializable(id);
   });
   return {
     props: {
