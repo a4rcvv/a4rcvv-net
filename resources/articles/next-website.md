@@ -1,7 +1,7 @@
 ---
 title: Next.jsでウェブサイトを作った話
 createdDate: 2023-01-31
-updatedDate: 2023-01-31
+updatedDate: 2023-02-12
 tags:
   - React
   - TypeScript
@@ -50,6 +50,8 @@ WordPressだとサーバーを借りて管理しないといけないし，セ�
 
 Next.jsは，Reactのコードから静的なhtml・jsファイルを生成するStatic Site Generation (SSG)を提供している．
 GitHub ActionsでSSGするCIを走らせ，できたファイルをGitHub Pagesで配信している．
+
+2023/2/12追記: CloudflareのCDNでキャッシュしてもらうことにした．大体のファイルはGitHub PagesのサーバーじゃなくてCDNから配信されているはず．
 
 ### 記事フォーマット
 
