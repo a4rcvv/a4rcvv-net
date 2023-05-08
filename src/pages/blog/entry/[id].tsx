@@ -8,7 +8,7 @@ import {
   getArticleMetadataSerializable,
 } from "@/lib/ssr/articles";
 import { MainTemplate } from "@/components/templates/mainTemplate";
-import { ArticleMetadataSerializable } from "@/lib/types";
+import { ArticleMetadata, ArticleMetadataSerializable } from "@/lib/types";
 import { defaultArticleSorter, deserialized } from "@/lib/articles";
 import { getPageTitle } from "@/lib/getPageTitle";
 import Head from "next/head";
@@ -34,9 +34,23 @@ export const getStaticProps: GetStaticProps<BlogArticleProps> = (context) => {
   const article = getArticle(id);
   const allMetadata = getAllMetadata().sort(defaultArticleSorter);
   const idx = allMetadata.findIndex((element) => element.id == id);
-  const prevMetadata =
-    idx + 1 < allMetadata.length ? allMetadata[idx + 1] : undefined;
-  const nextMetadata = idx - 1 >= 0 ? allMetadata[idx - 1] : undefined;
+
+  let prevMetadata: ArticleMetadata | undefined = undefined;
+  for (let i = idx + 1; i < allMetadata.length; i++) {
+    if (!allMetadata[i].isDraft) {
+      prevMetadata = allMetadata[i];
+      break;
+    }
+  }
+
+  let nextMetadata: ArticleMetadata | undefined = undefined;
+  for (let i = idx - 1; i >= 0; i--) {
+    if (!allMetadata[i].isDraft) {
+      nextMetadata = allMetadata[i];
+      break;
+    }
+  }
+
   return {
     props: {
       content: article.content,

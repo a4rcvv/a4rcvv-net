@@ -10,6 +10,7 @@ export const deserialized = (
     tags: serializable.tags,
     createdDate: dayjs(serializable.createdDate),
     updatedDate: dayjs(serializable.updatedDate),
+    isDraft: serializable.isDraft,
   };
 };
 export const defaultArticleSorter = (
