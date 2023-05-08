@@ -16,7 +16,7 @@ export const MyHead = (props: MyHeadProps) => {
   const origin = process.env.NEXT_PUBLIC_URL;
   const url = origin + router.asPath;
   const image = props.image ?? {
-    imageUrl: "/images/ogp.jpg",
+    imageUrl: origin+"/images/ogp.jpg",
     imageWidth: 400,
     imageHeight: 400,
   };
