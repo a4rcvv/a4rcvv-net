@@ -4,13 +4,15 @@ import {
 } from "react-markdown/lib/ast-to-react";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import oneDark from "react-syntax-highlighter/dist/cjs/styles/prism/one-dark";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import Link from "@/lib/link";
 import { ReactNode } from "react";
+import NextImage from "next/future/image";
+import remarkUnwrapImages from "remark-unwrap-images";
 
 export const ReactMdCodeBlock: CodeComponent = (props) => {
   if (props.inline) {
@@ -64,6 +66,32 @@ export const ReactMdLink = (
   return <Link href={href ?? ""}>{children}</Link>;
 };
 
+export type ReactMdImageProps = {
+  src?: string;
+  alt?: string;
+};
+
+export const ReactMdImage = (props: ReactMdImageProps) => {
+  return (
+    <Box
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "32vh",
+      }}
+    >
+      <Link href={props.src ?? ""}>
+        <NextImage
+          src={props.src ?? ""}
+          alt={props.alt ?? ""}
+          fill
+          style={{ objectFit: "contain", objectPosition: "left center" }}
+        />
+      </Link>
+    </Box>
+  );
+};
+
 export type MaterialReactMarkdownProps = {
   markdownString?: string;
 };
@@ -72,7 +100,7 @@ export const MaterialReactMarkdown = (props: MaterialReactMarkdownProps) => {
   return (
     <ReactMarkdown
       rehypePlugins={[rehypeKatex]}
-      remarkPlugins={[remarkGfm, remarkMath]}
+      remarkPlugins={[remarkGfm, remarkMath, remarkUnwrapImages]}
       components={{
         code: ReactMdCodeBlock,
         h1: ReactMdHeading,
@@ -82,6 +110,7 @@ export const MaterialReactMarkdown = (props: MaterialReactMarkdownProps) => {
         h5: ReactMdHeading,
         h6: ReactMdHeading,
         a: ReactMdLink,
+        img: ReactMdImage,
       }}
     >
       {props.markdownString ?? ""}

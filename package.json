@@ -36,7 +36,8 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype-katex": "^6.0.2",
     "remark-gfm": "^3.0.1",
-    "remark-math": "^5.1.1"
+    "remark-math": "^5.1.1",
+    "remark-unwrap-images": "^3.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
