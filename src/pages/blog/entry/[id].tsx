@@ -12,6 +12,7 @@ import { ArticleMetadata, ArticleMetadataSerializable } from "@/lib/types";
 import { defaultArticleSorter, deserialized } from "@/lib/articles";
 import { getPageTitle } from "@/lib/getPageTitle";
 import Head from "next/head";
+import { MyHead } from "@/lib/MyHead";
 
 export const getStaticPaths: GetStaticPaths<BlogArticlePathParams> = () => {
   const ids = getAllPostIds().filter((id) => {
@@ -81,9 +82,7 @@ export type BlogArticlePathParams = {
 const BlogArticle: NextPage<BlogArticleProps> = (props: BlogArticleProps) => {
   return (
     <div>
-      <Head>
-        <title>{getPageTitle(`${props.currentMetadata.title}`)}</title>
-      </Head>
+      <MyHead title={getPageTitle(`${props.currentMetadata.title}`)} />
       <MainTemplate
         mainContent={
           <Article

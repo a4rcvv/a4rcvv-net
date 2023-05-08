@@ -8,6 +8,7 @@ import { ArticleMetadataSerializable } from "@/lib/types";
 import { deserialized } from "@/lib/articles";
 import { getPageTitle } from "@/lib/getPageTitle";
 import Head from "next/head";
+import { MyHead } from "@/lib/MyHead";
 
 export type BlogIndexProps = {
   metadata: ArticleMetadataSerializable[];
@@ -38,9 +39,7 @@ const BlogIndex: NextPage<BlogIndexProps> = (props) => {
   }
   return (
     <div>
-      <Head>
-        <title>{getPageTitle("記事一覧")}</title>
-      </Head>
+      <MyHead title={getPageTitle("記事一覧")}/>
       <MainTemplate
         mainContent={<ArticleList metadata={metadata} tagsFilter={tags} />}
         subContents={[<TagList metadata={metadata} key={0} />]}

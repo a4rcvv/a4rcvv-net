@@ -13,6 +13,7 @@ import { NextLinkComposed } from "@/lib/link";
 import { menuElements } from "@/constants";
 import Head from "next/head";
 import { getPageTitle } from "@/lib/getPageTitle";
+import { MyHead } from "@/lib/MyHead";
 
 const Home: NextPage = () => {
   const mainContent = () => {
@@ -41,9 +42,7 @@ const Home: NextPage = () => {
   };
   return (
     <div>
-      <Head>
-        <title>{getPageTitle()}</title>
-      </Head>
+      <MyHead title={getPageTitle()}/>
       <MainTemplate mainContent={mainContent()} />
     </div>
   );
