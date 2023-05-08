@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import { NextLinkComposed } from "@/lib/link";
 import { menuElements } from "@/constants";
-import Head from "next/head";
 import { getPageTitle } from "@/lib/getPageTitle";
 import { MyHead } from "@/lib/MyHead";
 

@@ -9,7 +9,6 @@ import { ArticleList } from "@/components/organisms/articleList";
 import { MainTemplate } from "@/components/templates/mainTemplate";
 import { deserialized } from "@/lib/articles";
 import { getPageTitle } from "@/lib/getPageTitle";
-import Head from "next/head";
 import { MyHead } from "@/lib/MyHead";
 
 export type BlogTagViewPathParams = {

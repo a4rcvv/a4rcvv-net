@@ -11,7 +11,6 @@ import { MainTemplate } from "@/components/templates/mainTemplate";
 import { ArticleMetadata, ArticleMetadataSerializable } from "@/lib/types";
 import { defaultArticleSorter, deserialized } from "@/lib/articles";
 import { getPageTitle } from "@/lib/getPageTitle";
-import Head from "next/head";
 import { MyHead } from "@/lib/MyHead";
 
 export const getStaticPaths: GetStaticPaths<BlogArticlePathParams> = () => {
