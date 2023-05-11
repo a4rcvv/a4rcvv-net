@@ -1,7 +1,7 @@
 ---
 title: PyTorch Lightningについて整理したい
-createdDate: 2023-05-08
-updatedDate: 2023-05-08
+createdDate: 2023-05-11
+updatedDate: 2023-05-11
 tags:
 - Lightning
 - PyTorch Lightning
