@@ -57,6 +57,7 @@ export const Footer = () => {
           <FontAwesomeIcon icon={faGithub} color={primaryContrast} />
         </IconButton>
       </Stack>
+      
       <Typography align={"center"} color={"secondary.contrastText"}>
         © {dayjs().year()} Arc
       </Typography>

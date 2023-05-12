@@ -3,6 +3,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { getTheme } from "@/lib/theme";
+import { GTMId, GoogleTagManager } from "@/lib/ga";
 // import Script from "next/script";
 // import { useRouter } from "next/router";
 // import { useEffect } from "react";
@@ -56,6 +57,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       {/*/>*/}
       <CssBaseline>
         <ThemeProvider theme={theme}>
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as GTMId} />
           <CssBaseline />
           <Component {...pageProps} />
         </ThemeProvider>
