@@ -1,5 +1,5 @@
 import { createTheme, responsiveFontSizes } from "@mui/material";
-import { blue, blueGrey, deepPurple, grey } from "@mui/material/colors";
+import { blue, blueGrey, deepPurple, grey, indigo } from "@mui/material/colors";
 
 export const getTheme = () => {
   const theme = createTheme({
@@ -21,7 +21,7 @@ export const getTheme = () => {
         fontSize: "2rem",
       },
       h4: {
-        fontSize: "1.75rem",
+        fontSize: "1.5rem",
       },
     },
     breakpoints: {
@@ -35,10 +35,10 @@ export const getTheme = () => {
     palette: {
       background: {
         default: blueGrey[100],
-        paper: grey[200],
+        paper: grey[50],
       },
       primary: { main: blue[200] },
-      secondary: { main: deepPurple[200] },
+      secondary: { main: indigo[200] },
     },
   });
   return responsiveFontSizes(theme, {
