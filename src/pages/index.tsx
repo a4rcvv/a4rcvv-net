@@ -41,7 +41,7 @@ const Home: NextPage = () => {
   };
   return (
     <div>
-      <MyHead title={getPageTitle()}/>
+      <MyHead title={getPageTitle()} />
       <MainTemplate mainContent={mainContent()} />
     </div>
   );

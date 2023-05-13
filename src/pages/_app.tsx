@@ -8,6 +8,7 @@ import { GTMId, GoogleTagManager } from "@/lib/ga";
 // import { useRouter } from "next/router";
 // import { useEffect } from "react";
 // import { pageView } from "@/lib/ga";
+import "../styles/global.css";
 
 config.autoAddCss = false;
 

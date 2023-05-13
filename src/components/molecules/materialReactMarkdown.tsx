@@ -16,7 +16,11 @@ import remarkUnwrapImages from "remark-unwrap-images";
 
 export const ReactMdCodeBlock: CodeComponent = (props) => {
   if (props.inline) {
-    return <code className={props.className}>{props.children}</code>;
+    return (
+      <code className="rounded bg-zinc-200 py-1 px-1 mx-1 text-red-600 dark:bg-zinc-600 dark:text-zinc-300">
+        {props.children}
+      </code>
+    );
   }
   const match = /language-(\w+)/.exec(props.className || "");
   const lang = match && match[1] ? match[1] : "";
@@ -47,6 +51,14 @@ export const ReactMdHeading: HeadingComponent = (props) => {
   })();
   return (
     <Typography variant={variant} sx={{ my: 2 }}>
+      {props.children}
+    </Typography>
+  );
+};
+
+export const ReactMdParagraph = (props: { children: ReactNode }) => {
+  return (
+    <Typography variant={"body1"} sx={{ my: 1 }}>
       {props.children}
     </Typography>
   );
@@ -111,6 +123,7 @@ export const MaterialReactMarkdown = (props: MaterialReactMarkdownProps) => {
         h6: ReactMdHeading,
         a: ReactMdLink,
         img: ReactMdImage,
+        p: ReactMdParagraph,
       }}
     >
       {props.markdownString ?? ""}
