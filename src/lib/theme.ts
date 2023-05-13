@@ -1,5 +1,5 @@
 import { createTheme, responsiveFontSizes } from "@mui/material";
-import { blue, blueGrey, deepPurple, grey, indigo } from "@mui/material/colors";
+import { blue, blueGrey, grey, indigo } from "@mui/material/colors";
 
 export const getTheme = () => {
   const theme = createTheme({
