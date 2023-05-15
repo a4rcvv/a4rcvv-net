@@ -23,6 +23,7 @@ export const MyHead = (props: MyHeadProps) => {
   return (
     <Head>
       <title>{props.title}</title>
+      <link rel="canonical" href={url} />
       <meta property="og:title" content={props.title} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
