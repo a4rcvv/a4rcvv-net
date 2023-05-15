@@ -70,12 +70,12 @@ export const ReactMdLink = (
   const { href, children } = props;
   if (href?.match("http")) {
     return (
-      <Link href={href} target={"_blank"} color={"inherit"}>
+      <Link href={href} target={"_blank"} color="primary.dark">
         {children}
       </Link>
     );
   }
-  return <Link href={href ?? ""}>{children}</Link>;
+  return <Link href={href ?? ""} color="primary.dark">{children}</Link>;
 };
 
 export type ReactMdImageProps = {

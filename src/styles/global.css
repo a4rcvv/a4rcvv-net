@@ -9,4 +9,7 @@
   li > ul {
     @apply pl-4;
   }
+  a {
+    word-wrap: break-word;
+  }
 }
