@@ -50,7 +50,7 @@ export const ReactMdHeading: HeadingComponent = (props) => {
     }
   })();
   return (
-    <Typography variant={variant} sx={{ my: 2 }}>
+    <Typography variant={variant} sx={{ mb: 2 }}>
       {props.children}
     </Typography>
   );
@@ -58,7 +58,7 @@ export const ReactMdHeading: HeadingComponent = (props) => {
 
 export const ReactMdParagraph = (props: { children: ReactNode }) => {
   return (
-    <Typography variant={"body1"} sx={{ my: 1 }}>
+    <Typography variant={"body1"} sx={{ mb: 2 }}>
       {props.children}
     </Typography>
   );
