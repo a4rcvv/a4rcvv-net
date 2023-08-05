@@ -1,15 +1,15 @@
-import "katex/dist/katex.min.css";
-import { Box, Divider, Stack, Typography, useTheme } from "@mui/material";
-import { CreatedDate } from "@/components/molecules/createdDate";
-import { UpdatedDate } from "@/components/molecules/updatedDate";
 import { TwitterShareButton } from "@/components/atoms/twitterShareButton";
-import { ShareButtons } from "@/components/molecules/shareButtons";
-import { useRouter } from "next/router";
-import React from "react";
-import { MaterialReactMarkdown } from "@/components/molecules/materialReactMarkdown";
-import { Tags } from "@/components/molecules/tags";
-import { ArticleMetadata } from "@/lib/types";
 import { ArticleNavigation } from "@/components/molecules/articleNavigation";
+import { CreatedDate } from "@/components/molecules/createdDate";
+import { MaterialReactMarkdown } from "@/components/molecules/materialReactMarkdown";
+import { ShareButtons } from "@/components/molecules/shareButtons";
+import { Tags } from "@/components/molecules/tags";
+import { UpdatedDate } from "@/components/molecules/updatedDate";
+import { ArticleMetadata } from "@/lib/types";
+import { Box, Divider, Stack, Typography, useTheme } from "@mui/material";
+import "katex/dist/katex.min.css";
+import { usePathname } from "next/navigation";
+import React from "react";
 
 export type ArticleProps = {
   markdownString?: string;
@@ -20,7 +20,7 @@ export type ArticleProps = {
 
 export const Article = (props: ArticleProps) => {
   const theme = useTheme();
-  const router = useRouter();
+  const pathname = usePathname();
   const twitterShareButtonProps: React.ComponentProps<
     typeof TwitterShareButton
   > = {
@@ -50,7 +50,7 @@ export const Article = (props: ArticleProps) => {
       <Divider />
       <ShareButtons
         twitterProps={twitterShareButtonProps}
-        url={`${process.env.NEXT_PUBLIC_URL}${router.asPath}`}
+        url={`${process.env.NEXT_PUBLIC_URL}${pathname}`}
         text={props.currentMetadata.title}
       />
       <Box sx={{ mt: 1 }}>

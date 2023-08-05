@@ -1,35 +1,25 @@
-import { GetStaticProps, NextPage } from "next";
-import { getAllMetadataSerializable } from "@/lib/ssr/articles";
+"use client";
+
 import { ArticleList } from "@/components/organisms/articleList";
-import { MainTemplate } from "@/components/templates/mainTemplate";
-import { useRouter } from "next/router";
 import { TagList } from "@/components/organisms/tagList";
-import { ArticleMetadataSerializable } from "@/lib/types";
+import { MainTemplate } from "@/components/templates/mainTemplate";
+// import { MyHead } from "@/lib/MyHead";
 import { deserialized } from "@/lib/articles";
 import { getPageTitle } from "@/lib/getPageTitle";
-import { MyHead } from "@/lib/MyHead";
+import { ArticleMetadataSerializable } from "@/lib/types";
+import { NextPage } from "next";
+import { useSearchParams } from "next/navigation";
 
 export type BlogIndexProps = {
   metadata: ArticleMetadataSerializable[];
-};
-
-export const getStaticProps: GetStaticProps<BlogIndexProps> = () => {
-  const metadata = getAllMetadataSerializable().filter((e) => {
-    return !e.isDraft;
-  });
-  return {
-    props: {
-      metadata: metadata,
-    },
-  };
 };
 
 const BlogIndex: NextPage<BlogIndexProps> = (props) => {
   const metadata = props.metadata.map((data) => {
     return deserialized(data);
   });
-  const router = useRouter();
-  const tagQuery = router.query["tag"];
+  const params = useSearchParams();
+  const tagQuery = params.get("tag");
   let tags: string[] = [];
   if (typeof tagQuery == "string") {
     tags = [tagQuery];
@@ -38,7 +28,7 @@ const BlogIndex: NextPage<BlogIndexProps> = (props) => {
   }
   return (
     <div>
-      <MyHead title={getPageTitle("記事一覧")}/>
+      {/* <MyHead title={getPageTitle("記事一覧")} /> */}
       <MainTemplate
         mainContent={<ArticleList metadata={metadata} tagsFilter={tags} />}
         subContents={[<TagList metadata={metadata} key={0} />]}

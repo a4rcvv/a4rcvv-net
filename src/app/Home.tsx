@@ -1,5 +1,10 @@
-import type { NextPage } from "next";
+"use client";
+
 import { MainTemplate } from "@/components/templates/mainTemplate";
+import { menuElements } from "@/constants";
+// import { MyHead } from "@/lib/MyHead";
+import { getPageTitle } from "@/lib/getPageTitle";
+import { NextLinkComposed } from "@/lib/link";
 import {
   Box,
   Card,
@@ -9,10 +14,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { NextLinkComposed } from "@/lib/link";
-import { menuElements } from "@/constants";
-import { getPageTitle } from "@/lib/getPageTitle";
-import { MyHead } from "@/lib/MyHead";
+import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   const mainContent = () => {
@@ -41,7 +43,7 @@ const Home: NextPage = () => {
   };
   return (
     <div>
-      <MyHead title={getPageTitle()} />
+      {/* <MyHead title={getPageTitle()} /> */}
       <MainTemplate mainContent={mainContent()} />
     </div>
   );
