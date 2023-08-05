@@ -11,7 +11,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import Link from "@/lib/link";
 import { ReactNode } from "react";
-import NextImage from "next/future/image";
+import NextImage from "next/image";
 import remarkUnwrapImages from "remark-unwrap-images";
 
 export const ReactMdCodeBlock: CodeComponent = (props) => {
