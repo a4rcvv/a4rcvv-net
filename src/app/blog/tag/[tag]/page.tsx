@@ -24,7 +24,8 @@ export const generateStaticParams = () => {
   });
 };
 
-export const generateMetadata = ({ tag }: { tag: string }) => {
+export const generateMetadata = ({ params }: { params: { tag: string } }) => {
+  const tag = params.tag;
   return generateMyMetadata(
     `Tag: ${tag}`,
     undefined,
