@@ -2,6 +2,8 @@ import ThemeRegistry from "@/app/ThemeRegistry";
 import { GoogleTagManager, GTMId } from "@/lib/ga";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
+import "./globals.css";
+
 config.autoAddCss = false;
 
 declare module "@mui/material/styles" {
