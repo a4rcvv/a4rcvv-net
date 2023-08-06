@@ -1,4 +1,5 @@
 import BlogTagView from "@/app/blog/tag/[tag]/BlogTagView";
+import { generateMyMetadata } from "@/lib/metadata";
 import {
   getAllPostIds,
   getArticle,
@@ -21,6 +22,15 @@ export const generateStaticParams = () => {
       tag: tag,
     };
   });
+};
+
+export const generateMetadata = ({ tag }: { tag: string }) => {
+  return generateMyMetadata(
+    `Tag: ${tag}`,
+    undefined,
+    `/blog/tag/${tag}`,
+    undefined,
+  );
 };
 
 const Page = async ({ params }: { params: { tag: string } }) => {

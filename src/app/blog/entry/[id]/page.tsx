@@ -1,5 +1,6 @@
 import BlogArticle from "@/app/blog/entry/[id]/BlogArticle";
 import { defaultArticleSorter } from "@/lib/articles";
+import { generateMyMetadata } from "@/lib/metadata";
 import {
   getAllMetadata,
   getAllPostIds,
@@ -19,6 +20,17 @@ export const generateStaticParams = () => {
       id: id,
     };
   });
+};
+
+export const generateMetadata = ({ params }: { params: { id: string } }) => {
+  const id = params.id;
+  const contentMetadata = getArticleMetadata(id);
+  return generateMyMetadata(
+    contentMetadata.title,
+    undefined,
+    `/blog/entry/${id}`,
+    undefined,
+  );
 };
 
 const Page = async ({ params }: { params: { id: string } }) => {
