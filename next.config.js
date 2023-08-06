@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: "export"
 };
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
