@@ -4,7 +4,6 @@ import { MainTemplate } from "@/components/templates/mainTemplate";
 import { deserialized } from "@/lib/articles";
 import { ArticleMetadataSerializable } from "@/lib/types";
 import { NextPage } from "next";
-// import { MyHead } from "@/lib/MyHead";
 
 export type BlogArticleProps = {
   content: string;
@@ -20,7 +19,6 @@ export type BlogArticlePathParams = {
 const BlogArticle: NextPage<BlogArticleProps> = (props: BlogArticleProps) => {
   return (
     <div>
-      {/* <MyHead title={getPageTitle(`${props.currentMetadata.title}`)} /> */}
       <MainTemplate
         mainContent={
           <Article

@@ -3,9 +3,7 @@
 import { BlogIndexProps } from "@/app/blog/BlogIndex";
 import { ArticleList } from "@/components/organisms/articleList";
 import { MainTemplate } from "@/components/templates/mainTemplate";
-// import { MyHead } from "@/lib/MyHead";
 import { deserialized } from "@/lib/articles";
-import { getPageTitle } from "@/lib/getPageTitle";
 import { NextPage } from "next";
 
 export type BlogTagViewPathParams = {
@@ -22,7 +20,6 @@ const BlogTagView: NextPage<BlogTagViewProps> = (props) => {
   });
   return (
     <div>
-      {/* <MyHead title={getPageTitle(`Tag: ${props.tag}`)} /> */}
       <MainTemplate
         mainContent={
           <ArticleList metadata={metadata} tagsFilter={[props.tag]} />

@@ -2,8 +2,6 @@
 
 import { MainTemplate } from "@/components/templates/mainTemplate";
 import { menuElements } from "@/constants";
-// import { MyHead } from "@/lib/MyHead";
-import { getPageTitle } from "@/lib/getPageTitle";
 import { NextLinkComposed } from "@/lib/link";
 import {
   Box,
@@ -43,7 +41,6 @@ const Home: NextPage = () => {
   };
   return (
     <div>
-      {/* <MyHead title={getPageTitle()} /> */}
       <MainTemplate mainContent={mainContent()} />
     </div>
   );
