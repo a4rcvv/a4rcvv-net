@@ -1,8 +1,6 @@
-"use client";
+import ThemeRegistry from "@/app/ThemeRegistry";
 import { GoogleTagManager, GTMId } from "@/lib/ga";
-import { getTheme } from "@/lib/theme";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { CssBaseline, ThemeProvider } from "@mui/material";
 
 config.autoAddCss = false;
 
@@ -27,15 +25,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const theme = getTheme();
   return (
     <html lang="ja">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as GTMId} />
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
+        <ThemeRegistry options={{ key: "mui" }}>{children}</ThemeRegistry>
       </body>
     </html>
   );
