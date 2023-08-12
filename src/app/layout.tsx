@@ -1,5 +1,5 @@
 import ThemeRegistry from "@/app/ThemeRegistry";
-import { GoogleTagManager, GTMId } from "@/lib/ga";
+import { GAId, GoogleTagManager, GTMId } from "@/lib/ga";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
 import "./globals.css";
@@ -29,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as GTMId} />
+      <head>
+        <GoogleTagManager gaId={process.env.NEXT_PUBLIC_GA_ID as GAId} />
+      </head>
       <body>
         <ThemeRegistry options={{ key: "mui" }}>{children}</ThemeRegistry>
       </body>
