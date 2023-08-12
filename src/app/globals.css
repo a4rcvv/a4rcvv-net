@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ul {
+  list-style: disc;
+  list-style-type: disc;
+  margin-left: 1rem;
+  padding: 0;
+}
+
+ul ul {
+  list-style: circle;
+  list-style-type: circle;
+  margin-left: 1rem;
+  padding: 0;
+}
+
+ul ul ul {
+  list-style: square;
+  list-style-type: square;
+  margin-left: 1rem;
+  padding: 0;
+}
+
+ul ul ul ul{
+  list-style: circle;
+  list-style-type: circle;
+  margin-left: 1rem;
+  padding: 0;
+}

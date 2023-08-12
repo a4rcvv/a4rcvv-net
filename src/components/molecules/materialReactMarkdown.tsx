@@ -1,17 +1,17 @@
+import Link from "@/lib/link";
+import { Box, Typography } from "@mui/material";
+import NextImage from "next/image";
+import { ReactNode } from "react";
+import ReactMarkdown from "react-markdown";
 import {
   CodeComponent,
   HeadingComponent,
 } from "react-markdown/lib/ast-to-react";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import oneDark from "react-syntax-highlighter/dist/cjs/styles/prism/one-dark";
-import { Box, Typography } from "@mui/material";
-import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import Link from "@/lib/link";
-import { ReactNode } from "react";
-import NextImage from "next/image";
 import remarkUnwrapImages from "remark-unwrap-images";
 
 export const ReactMdCodeBlock: CodeComponent = (props) => {
@@ -50,7 +50,7 @@ export const ReactMdHeading: HeadingComponent = (props) => {
     }
   })();
   return (
-    <Typography variant={variant} sx={{ mb: 2 }}>
+    <Typography variant={variant} sx={{ mb: 2 }} fontWeight={"bold"}>
       {props.children}
     </Typography>
   );
@@ -58,7 +58,7 @@ export const ReactMdHeading: HeadingComponent = (props) => {
 
 export const ReactMdParagraph = (props: { children: ReactNode }) => {
   return (
-    <Typography variant={"body1"} sx={{ mb: 2 }}>
+    <Typography variant={"body1"} sx={{ mb: 2 }} fontWeight={"medium"}>
       {props.children}
     </Typography>
   );
@@ -75,7 +75,11 @@ export const ReactMdLink = (
       </Link>
     );
   }
-  return <Link href={href ?? ""} color="primary.dark">{children}</Link>;
+  return (
+    <Link href={href ?? ""} color="primary.dark">
+      {children}
+    </Link>
+  );
 };
 
 export type ReactMdImageProps = {

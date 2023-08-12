@@ -12,16 +12,16 @@ export const getTheme = () => {
       ].join(","),
       fontSize: 14,
       h1: {
-        fontSize: "4rem",
+        fontSize: "2.5rem",
       },
       h2: {
-        fontSize: "3rem",
+        fontSize: "2.5rem",
       },
       h3: {
-        fontSize: "2rem",
+        fontSize: "1.5rem",
       },
       h4: {
-        fontSize: "1.5rem",
+        fontSize: "1.2rem",
       },
     },
     breakpoints: {
