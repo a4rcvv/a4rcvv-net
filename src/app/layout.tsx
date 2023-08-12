@@ -1,5 +1,5 @@
 import ThemeRegistry from "@/app/ThemeRegistry";
-import { GAId, GoogleTagManager, GTMId } from "@/lib/ga";
+import { GAId, GoogleTagManager } from "@/lib/ga";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
 import "./globals.css";
