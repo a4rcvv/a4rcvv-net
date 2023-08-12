@@ -1,12 +1,12 @@
 ---
 title: インターン記【(株)いい生活編】 または私は如何にしてデザインパターンをチーム開発に導入したか
-createdDate: 2023-06-11
-updatedDate: 2023-06-11
+createdDate: 2023-08-12
+updatedDate: 2023-08-12
 tags:
 - インターン
 - React
 - デザインパターン
-isDraft: true
+isDraft: false
 ---
 
 [株式会社いい生活](https://www.e-seikatsu.info)のサマーインターンに参加してきた話です。
