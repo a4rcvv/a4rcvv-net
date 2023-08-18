@@ -1,7 +1,7 @@
 ---
 title: インターン記【(株)いい生活編】 または私は如何にしてデザインパターンをチーム開発に導入したか
-createdDate: 2023-08-12
-updatedDate: 2023-08-12
+createdDate: 2023-08-18
+updatedDate: 2023-08-18
 tags:
 - インターン
 - React
