@@ -1,3 +1,4 @@
+import { MastodonShareButton } from "@/components/atoms/mastodonShareButton";
 import { TwitterShareButton } from "@/components/atoms/twitterShareButton";
 import { ArticleNavigation } from "@/components/molecules/articleNavigation";
 import { CreatedDate } from "@/components/molecules/createdDate";
@@ -31,6 +32,16 @@ export const Article = (props: ArticleProps) => {
       size: "large",
     },
   };
+  const mastodonShareButtonProps: React.ComponentProps<
+    typeof MastodonShareButton
+  > = {
+    fontAwesomeIconProps: {
+      color: theme.palette.text.primary,
+    },
+    iconButtonProps: {
+      size: "large",
+    },
+  };
   return (
     <Box>
       <Typography variant="h1" sx={{ mb: 2 }}>
@@ -50,6 +61,7 @@ export const Article = (props: ArticleProps) => {
       <Divider />
       <ShareButtons
         twitterProps={twitterShareButtonProps}
+        mastodonProps={mastodonShareButtonProps}
         url={`${process.env.NEXT_PUBLIC_URL}${pathname}`}
         text={props.currentMetadata.title}
       />
