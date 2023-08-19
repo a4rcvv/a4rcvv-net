@@ -1,5 +1,6 @@
 import Link from "@/lib/link";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
+import { Variant } from "@mui/material/styles/createTypography";
 import NextImage from "next/image";
 import { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
@@ -31,34 +32,37 @@ export const ReactMdCodeBlock: CodeComponent = (props) => {
   );
 };
 export const ReactMdHeading: HeadingComponent = (props) => {
-  const variant = (() => {
+  const [variant, mt, includeDivider]: [Variant, number, boolean] = (() => {
     switch (props.level) {
       case 1:
-        return "h1";
+        return ["h1", 6, false];
       case 2:
-        return "h2";
+        return ["h2", 5, true];
       case 3:
-        return "h3";
+        return ["h3", 4, false];
       case 4:
-        return "h4";
+        return ["h4", 3, false];
       case 5:
-        return "h5";
+        return ["h5", 2, false];
       case 6:
-        return "h6";
+        return ["h6", 2, false];
       default:
         throw Error("Unknown level");
     }
   })();
   return (
-    <Typography variant={variant} sx={{ mb: 2 }} fontWeight={"bold"}>
-      {props.children}
-    </Typography>
+    <div>
+      <Typography variant={variant} sx={{ mb: 2, mt: mt }} fontWeight={"bold"}>
+        {props.children}
+      </Typography>
+      {includeDivider && <Divider />}
+    </div>
   );
 };
 
 export const ReactMdParagraph = (props: { children: ReactNode }) => {
   return (
-    <Typography variant={"body1"} sx={{ mb: 2 }} fontWeight={"medium"}>
+    <Typography variant={"body1"} sx={{ mt: 2 }} fontWeight={"medium"}>
       {props.children}
     </Typography>
   );
