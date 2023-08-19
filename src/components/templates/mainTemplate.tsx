@@ -21,7 +21,7 @@ export type DoubleColumnTemplateProps = {
 
 export const MainTemplate = (props: DoubleColumnTemplateProps) => {
   const theme = useTheme();
-  const p = useResponsiveValue(1, 2, 2, 4);
+  const p = useResponsiveValue(1, 2, 4, 8);
   const pt = ((theme.mixins as Mixins).toolbar.minHeight as number) / 8 + p;
   const isTablet = useMediaQuery(() => theme.breakpoints.only("tablet"));
   const isMobile = useMediaQuery(() => theme.breakpoints.only("mobile"));
